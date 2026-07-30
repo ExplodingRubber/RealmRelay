@@ -1,49 +1,287 @@
 # RealmControl
 
-RealmControl is an open-source, cross-platform game server management platform.
+**A unified game server management platform for dedicated servers.**
 
-## Status
+RealmControl is a platform designed to simplify the management of dedicated game servers across multiple machines and environments.
 
-Early Development (0.0.1)
+The goal of RealmControl is to provide a single management solution for game server owners who run multiple servers, multiple games, or multiple physical and virtual hosts.
 
-## Goals
+Instead of maintaining individual scripts for each game, RealmControl provides a modular system that can discover, monitor, configure, and manage dedicated game servers through a consistent interface.
 
-- Cross-platform support (Windows/Linux)
-- Agent-based architecture
-- Multi-host management
-- Game server discovery
-- Automated deployment
-- SteamCMD integration
-- Discord integration
+---
 
-## Architecture
+# Project Status
 
-RealmControl consists of:
+**Current Version:** 0.0.2  
+**Development Stage:** Foundation / Early Development
 
-### RealmControl Agent
+RealmControl is currently under active development. The current focus is building the core agent architecture, configuration system, and host management framework that future game integrations will use.
 
-Installed on managed hosts.
+At this stage, RealmControl is not yet intended for production use.
 
-Responsibilities:
-- Identify host hardware and operating system
-- Monitor managed game servers
-- Perform approved management actions
+---
 
-### RealmControl Console
+# Current Features
 
-User-facing management application.
+## RealmControl Agent
 
-Responsibilities:
-- Manage hosts
-- Manage games
-- View status and logs
+The RealmControl Agent is the foundation of the platform.
 
-### RealmControl Core
+Current capabilities:
 
-Shared business logic.
+- Starts as a standalone Python application
+- Identifies the host machine it is running on
+- Reports:
+  - Hostname
+  - Operating system
+  - OS version
+  - CPU information
+  - Logical processor count
+  - Memory allocation
 
-Responsibilities:
-- Game management
-- Discovery
-- Updates
-- Backups
+---
+
+## Configuration Management
+
+RealmControl includes a centralized configuration system designed to avoid hardcoded paths and machine-specific assumptions.
+
+The configuration system will eventually manage:
+
+- Installed games
+- Server locations
+- Host settings
+- Discovery preferences
+- Agent settings
+
+---
+
+## Path Management
+
+RealmControl uses an abstraction layer for application and data locations.
+
+This allows future installations to support different environments, including:
+
+- Development environments
+- Windows installations
+- Linux installations
+- Containerized deployments
+
+---
+
+# Project Goals
+
+RealmControl is being designed around several core principles.
+
+## No Hardcoded Server Paths
+
+Game servers can exist anywhere.
+
+RealmControl should discover and manage servers without requiring users to modify scripts every time a server location changes.
+
+---
+
+## Modular Game Support
+
+Each game server should have its own management module.
+
+Examples:
+
+- Palworld
+- Minecraft
+- ARK: Survival Evolved
+- Other SteamCMD-based servers
+- Future dedicated server platforms
+
+Each module will define:
+
+- How a server is detected
+- How it is installed
+- How it is updated
+- How it is monitored
+- How it is managed
+
+---
+
+## Host-Based Architecture
+
+RealmControl is designed around a host and agent model.
+
+A machine running RealmControl Agent can:
+
+- Report hardware information
+- Identify installed servers
+- Monitor server status
+- Execute approved management actions
+
+A central console can then manage multiple hosts.
+
+---
+
+# Planned Features
+
+## First-Run Setup
+
+RealmControl will guide users through initial configuration.
+
+Example workflow:
+
+1. Install RealmControl Agent
+2. Identify the host system
+3. Ask whether game servers already exist
+4. Scan approved locations
+5. Detect installed servers
+6. Offer installation options for missing services
+
+---
+
+## Game Server Discovery
+
+RealmControl will be able to identify installed servers by using game-specific detection modules.
+
+Discovery may include:
+
+- Known server executables
+- Configuration files
+- Directory structures
+- Installed service information
+
+Users will control what locations RealmControl scans.
+
+---
+
+## Game Server Installation
+
+RealmControl will eventually provide guided installation workflows.
+
+Examples:
+
+- Install SteamCMD
+- Create server directories
+- Download server files
+- Configure initial settings
+- Register servers for management
+
+---
+
+## Host Management
+
+Future versions will include host-level management:
+
+- CPU usage
+- Memory usage
+- Storage information
+- Uptime
+- Operating system information
+- Service status
+- Restart/shutdown controls
+
+---
+
+## Management Console
+
+The long-term goal is a dedicated management application that allows users to:
+
+- View all hosts
+- View all game servers
+- Manage configurations
+- Start, stop, and restart servers
+- Monitor activity
+
+---
+
+# Architecture
+
+Current structure:
+
+```text
+RealmControl
+│
+├── agent
+│   ├── main.py
+│   └── host.py
+│
+├── core
+│   └── paths.py
+│
+├── config
+│   └── config_manager.py
+│
+├── games
+│
+├── models
+│
+├── utils
+│
+├── tests
+│
+└── data
+```
+
+The project is intentionally separated into modules to keep development maintainable and allow future contributors to understand the codebase.
+
+---
+
+# Supported Platforms
+
+RealmControl is being designed with cross-platform support in mind.
+
+Target platforms:
+
+- Windows
+- Linux
+
+The goal is for the same agent architecture to support different server environments regardless of operating system.
+
+---
+
+# Security and Privacy
+
+RealmControl is designed to be transparent.
+
+The software will only perform management actions on systems where it has been intentionally installed and configured.
+
+Users should understand that RealmControl may:
+
+- Scan configured locations for game server files
+- Monitor server configuration changes
+- Collect system information required for management features
+
+No hidden scanning or remote management should occur without user configuration.
+
+---
+
+# Development
+
+RealmControl is currently written in Python.
+
+Development environment:
+
+- Python 3.x
+- FastAPI
+- Uvicorn
+- Pydantic
+- psutil
+
+Additional dependencies will be added as features are implemented.
+
+---
+
+# Contributing
+
+RealmControl is currently in early development.
+
+As the project matures, contribution guidelines, issue templates, and development documentation will be added.
+
+---
+
+# License
+
+License information will be added before the first public release.
+
+---
+
+# Disclaimer
+
+RealmControl is designed for users managing their own dedicated server environments.
+
+Users are responsible for ensuring they have permission to install, monitor, and manage any systems, software, or game servers controlled by RealmControl.
