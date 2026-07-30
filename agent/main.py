@@ -2,7 +2,7 @@ from agent.host import get_host_info
 
 
 def main():
-    print("RealmControl Agent starting...")
+    print("RealmRelay Agent starting...")
     print()
 
     host = get_host_info()
