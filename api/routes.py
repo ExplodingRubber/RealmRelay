@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from agent.host import get_host_info
+from agent.system import get_system_info
 from core.metadata import APP_NAME, APP_VERSION
 
 
@@ -19,3 +20,8 @@ def status():
         "version": APP_VERSION,
         "status": "online"
     }
+
+
+@router.get("/api/v1/system")
+def system_info():
+    return get_system_info()
