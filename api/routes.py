@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from agent.host import get_host_info
 from agent.system import get_system_info
-from core.metadata import APP_NAME, APP_VERSION
+from config.settings import APP_NAME, APP_VERSION
 
 
 router = APIRouter()

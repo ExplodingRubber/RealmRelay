@@ -1,0 +1,5 @@
+APP_NAME = "RealmRelay Agent"
+APP_VERSION = "0.0.5"
+
+API_HOST = "0.0.0.0"
+API_PORT = 42069
