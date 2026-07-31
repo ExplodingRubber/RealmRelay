@@ -1,17 +1,17 @@
-from agent.host import get_host_info
+from api.server import app
+
+import uvicorn
+
+
+HOST = "0.0.0.0"
+PORT = 42069
 
 
 def main():
     print("RealmRelay Agent starting...")
-    print()
+    print(f"Listening on http://{HOST}:{PORT}")
 
-    host = get_host_info()
-
-    for key, value in host.items():
-        print(f"{key}: {value}")
-
-    print()
-    print("Status: Ready")
+    uvicorn.run(app, host=HOST, port=PORT)
 
 
 if __name__ == "__main__":
