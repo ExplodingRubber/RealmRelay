@@ -1,4 +1,16 @@
+import time
 import psutil
+
+
+def get_uptime():
+    uptime_seconds = int(time.time() - psutil.boot_time())
+
+    days = uptime_seconds // 86400
+    hours = (uptime_seconds % 86400) // 3600
+    minutes = (uptime_seconds % 3600) // 60
+    seconds = uptime_seconds % 60
+
+    return f"{days} Days, {hours} Hours, {minutes} Minutes, {seconds} Seconds"
 
 
 def get_system_info():

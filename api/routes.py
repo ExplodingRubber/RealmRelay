@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from agent.host import get_host_info
-from agent.system import get_system_info
+from agent.system import get_system_info, get_uptime
 from config.settings import APP_NAME, APP_VERSION
 
 
@@ -21,6 +21,7 @@ def status():
         "agent": APP_NAME,
         "version": APP_VERSION,
         "hostname": host["hostname"],
+        "uptime": get_uptime(),
         "status": "online"
     }
 
