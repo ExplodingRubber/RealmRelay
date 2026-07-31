@@ -1,6 +1,6 @@
 {
     "agent_name": "RealmRelay Agent",
-    "version": "0.0.51",
+    "version": "0.0.52",
     "api_host": "0.0.0.0",
     "api_port": 42069
 }

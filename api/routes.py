@@ -15,9 +15,12 @@ def host_info():
 
 @router.get("/api/v1/status")
 def status():
+    host = get_host_info()
+
     return {
         "agent": APP_NAME,
         "version": APP_VERSION,
+        "hostname": host["hostname"],
         "status": "online"
     }
 
